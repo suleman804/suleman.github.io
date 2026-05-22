@@ -397,8 +397,63 @@ ul, ol {
   z-index: 2;
 }
 
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+}
+
 .hero-content {
-  max-width: 720px;
+  max-width: 620px;
+  flex: 1;
+}
+
+/* Hero Profile Photo */
+.hero-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hero-photo-ring {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--grad-accent);
+  position: relative;
+  z-index: 2;
+  animation: photoFloat 6s ease-in-out infinite;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 50%;
+  border: 3px solid rgba(15, 23, 42, 0.9);
+}
+
+.hero-photo-glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: var(--grad-accent);
+  filter: blur(40px);
+  opacity: 0.3;
+  z-index: 1;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes photoFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(1.05); }
 }
 
 .hero-badge {
@@ -631,6 +686,16 @@ ul, ol {
   font-size: 1.5rem;
   font-weight: 800;
   color: #fff;
+}
+
+.about-avatar-img {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  object-position: center 25%;
+  border: 2px solid var(--clr-accent);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
 .about-card-name {
@@ -1234,6 +1299,394 @@ ul, ol {
 
 
 /* ============================================================
+   CERTIFICATIONS SECTION
+   ============================================================ */
+.certifications {
+  background: var(--clr-bg);
+}
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.cert-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.cert-google::before {
+  background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
+}
+
+.cert-infosys::before {
+  background: linear-gradient(90deg, #007CC3, #00A1E0);
+}
+
+.cert-coursera::before {
+  background: linear-gradient(90deg, #0056D2, #2196F3);
+}
+
+.cert-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-6px);
+  border-color: var(--clr-accent);
+}
+
+.cert-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl) 0;
+}
+
+.cert-issuer-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.cert-badge-google {
+  background: #E8F0FE;
+}
+
+.cert-badge-infosys {
+  background: #E0F2FE;
+}
+
+.cert-badge-coursera {
+  background: #EDE9FE;
+}
+
+.cert-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  background: var(--clr-surface-alt);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.cert-card-body {
+  padding: var(--space-lg) var(--space-xl);
+  flex: 1;
+}
+
+.cert-issuer {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-xs);
+}
+
+.cert-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--clr-text-primary);
+  margin-bottom: var(--space-sm);
+  line-height: 1.3;
+}
+
+.cert-desc {
+  font-size: 0.88rem;
+  color: var(--clr-text-secondary);
+  line-height: 1.6;
+}
+
+.cert-card-footer {
+  padding: 0 var(--space-xl) var(--space-lg);
+}
+
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--clr-accent);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: var(--clr-accent-soft);
+  transition: all var(--transition-fast);
+}
+
+.cert-link:hover {
+  background: var(--clr-accent);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.cert-link span {
+  transition: transform var(--transition-fast);
+}
+
+.cert-link:hover span {
+  transform: translateX(3px);
+}
+
+
+/* ============================================================
+   ACHIEVEMENTS SECTION
+   ============================================================ */
+.achievements {
+  background: var(--clr-surface);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.achievement-card {
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  text-align: center;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--grad-accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-slow);
+}
+
+.achievement-card:hover::after {
+  transform: scaleX(1);
+}
+
+.achievement-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-6px);
+}
+
+.achievement-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto var(--space-lg);
+}
+
+.achievement-icon-perf {
+  background: #FEF3C7;
+}
+
+.achievement-icon-cert {
+  background: #DBEAFE;
+}
+
+.achievement-icon-certs {
+  background: #FEE2E2;
+}
+
+.achievement-icon-framework {
+  background: #D1FAE5;
+}
+
+.achievement-metric {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--space-sm);
+}
+
+.achievement-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--clr-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.achievement-desc {
+  font-size: 0.88rem;
+  color: var(--clr-text-secondary);
+  line-height: 1.6;
+}
+
+
+/* Awards & Recognitions */
+.awards-heading {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--clr-text-primary);
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-xl);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--clr-border-light);
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-xl);
+}
+
+.award-card {
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.award-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.award-card-accent {
+  height: 4px;
+  width: 100%;
+}
+
+.award-accent-infosys {
+  background: linear-gradient(90deg, #007CC3, #00A1E0);
+}
+
+.award-accent-compete {
+  background: linear-gradient(90deg, #10B981, #34D399);
+}
+
+.award-accent-ml {
+  background: linear-gradient(90deg, #7C3AED, #A78BFA);
+}
+
+.award-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl) 0;
+}
+
+.award-source {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.award-icon {
+  font-size: 1.5rem;
+}
+
+.award-list {
+  padding: var(--space-md) var(--space-xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.award-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--clr-surface-alt);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.award-list li:hover {
+  border-color: var(--clr-border);
+  background: var(--clr-surface);
+  transform: translateX(4px);
+}
+
+.award-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.award-badge-gold {
+  background: #FEF3C7;
+}
+
+.award-badge-blue {
+  background: #DBEAFE;
+}
+
+.award-badge-orange {
+  background: #FFEDD5;
+}
+
+.award-badge-green {
+  background: #D1FAE5;
+}
+
+.award-badge-purple {
+  background: #EDE9FE;
+}
+
+.award-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--clr-text-primary);
+  line-height: 1.3;
+}
+
+.award-detail {
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
    RESPONSIVE DESIGN
    ============================================================ */
 @media (max-width: 1024px) {
@@ -1297,6 +1750,31 @@ ul, ol {
   }
   
   /* Hero */
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-photo-ring {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .hero-photo-wrap {
+    order: -1;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-tagline {
+    text-align: center;
+  }
+  
+  /* Hero */
   .hero-stats {
     gap: var(--space-xl);
     flex-wrap: wrap;
@@ -1309,6 +1787,20 @@ ul, ol {
   
   /* Skills */
   .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Certifications */
+  .certs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Achievements */
+  .achievements-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .awards-grid {
     grid-template-columns: 1fr;
   }
   
@@ -1363,6 +1855,14 @@ ul, ol {
   
   .timeline-card {
     padding: var(--space-lg);
+  }
+  
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievement-metric {
+    font-size: 2rem;
   }
 }
 
