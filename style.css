@@ -1448,6 +1448,98 @@ ul, ol {
   transform: translateX(3px);
 }
 
+/* Udacity card accent */
+.cert-udacity::before {
+  background: linear-gradient(90deg, #02B3E4, #01A3D4);
+}
+
+.cert-badge-udacity {
+  background: #E0F7FA;
+}
+
+/* NPTEL / IIT Madras card accent */
+.cert-nptel::before {
+  background: linear-gradient(90deg, #C62828, #E53935);
+}
+
+.cert-badge-nptel {
+  background: #FFEBEE;
+}
+
+/* PDF link variant */
+.cert-link-pdf {
+  background: #FFF7ED;
+  color: #C2410C;
+}
+
+.cert-link-pdf:hover {
+  background: #C2410C;
+  color: #fff;
+}
+
+/* Multi-link footer */
+.cert-card-footer-multi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Certificate thumbnail preview in cert cards */
+.cert-preview-thumb {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--clr-border-light);
+  transition: all var(--transition-base);
+  max-height: 100px;
+}
+
+.cert-preview-thumb:hover {
+  border-color: var(--clr-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.cert-preview-thumb img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+  transition: all var(--transition-slow);
+}
+
+.cert-preview-thumb:hover img {
+  filter: brightness(0.8);
+}
+
+.cert-preview-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: all var(--transition-base);
+}
+
+.cert-preview-overlay span {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #fff;
+  background: rgba(37, 99, 235, 0.85);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all var(--transition-base);
+}
+
+.cert-preview-thumb:hover .cert-preview-overlay span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* ============================================================
    ACHIEVEMENTS SECTION
