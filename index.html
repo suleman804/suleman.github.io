@@ -8,7 +8,7 @@
   <meta name="keywords" content="Data Engineer, ETL, DBT, Spark, Google Cloud, BigQuery, Airflow, PySpark, Portfolio, Resume" />
   <meta name="author" content="Suleman Salmani" />
   <meta property="og:title" content="Suleman Salmani — Data Engineer" />
-  <meta property="og:description" content="Data Engineer specializing in scalable ETL pipelines, cloud-native architectures, and modern data transformation." />
+  <meta property="og:description" content="Data Engineer specializing in scalable ETL pipelines, cloud-native architectures, and modern data transformation using Python, NumPy, Pandas, DBT, Spark, and Google Cloud." />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
@@ -61,7 +61,7 @@
           </h1>
 
           <p class="hero-tagline">
-            Data Engineer specializing in scalable ETL pipelines, cloud-native architectures, and modern data transformation using <strong>DBT</strong>, <strong>Spark</strong>, and <strong>Google Cloud</strong>.
+            Data Engineer specializing in scalable ETL pipelines, cloud-native architectures, and modern data transformation using <strong>Python</strong>, <strong>NumPy</strong>, <strong>Pandas</strong>, <strong>DBT</strong>, <strong>Spark</strong>, and <strong>Google Cloud</strong>.
           </p>
 
           <div class="hero-actions">
@@ -639,6 +639,12 @@
               <div>
                 <div class="award-name">DNA Rise Award — Rookie of the Quarter</div>
                 <div class="award-detail">Recognized as the top-performing new hire for exceptional contributions.</div>
+                <div class="award-cert-preview" onclick="openCertModal('assets/rise-award-certificate.png', 'RISE Award — Rookie of the Quarter')">
+                  <img src="assets/rise-award-certificate.png" alt="RISE Award — Rookie of the Quarter Certificate" class="award-cert-img" />
+                  <div class="award-cert-overlay">
+                    <span>🔍 View Certificate</span>
+                  </div>
+                </div>
               </div>
             </li>
             <li>
@@ -646,6 +652,12 @@
               <div>
                 <div class="award-name">Insta Award for Developing Automation Framework</div>
                 <div class="award-detail">Honored for building a high-impact automation framework for data pipelines.</div>
+                <div class="award-cert-preview" onclick="openCertModal('assets/insta-award-certificate.png', 'Insta Award — Certificate of Appreciation')">
+                  <img src="assets/insta-award-certificate.png" alt="Insta Award Certificate of Appreciation" class="award-cert-img" />
+                  <div class="award-cert-overlay">
+                    <span>🔍 View Certificate</span>
+                  </div>
+                </div>
               </div>
             </li>
           </ul>
@@ -784,6 +796,15 @@
   <!-- ============================================================
        FOOTER
        ============================================================ -->
+  <!-- Certificate Lightbox Modal -->
+  <div class="cert-modal" id="certModal" onclick="closeCertModal(event)">
+    <div class="cert-modal-content">
+      <button class="cert-modal-close" onclick="closeCertModal(event)" aria-label="Close">&times;</button>
+      <img id="certModalImg" src="" alt="Certificate" />
+      <div class="cert-modal-caption" id="certModalCaption"></div>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-text">

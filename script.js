@@ -222,3 +222,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+// ─────────────────────────────────────────────
+// CERTIFICATE LIGHTBOX MODAL
+// ─────────────────────────────────────────────
+function openCertModal(imgSrc, caption) {
+  const modal = document.getElementById('certModal');
+  const modalImg = document.getElementById('certModalImg');
+  const modalCaption = document.getElementById('certModalCaption');
+
+  modalImg.src = imgSrc;
+  modalCaption.textContent = caption;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCertModal(event) {
+  const modal = document.getElementById('certModal');
+  // Close if clicking the backdrop or the close button, not the image
+  if (event.target === modal || event.target.closest('.cert-modal-close')) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('certModal');
+    if (modal && modal.classList.contains('active')) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+});
