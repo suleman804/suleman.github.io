@@ -1448,6 +1448,98 @@ ul, ol {
   transform: translateX(3px);
 }
 
+/* Udacity card accent */
+.cert-udacity::before {
+  background: linear-gradient(90deg, #02B3E4, #01A3D4);
+}
+
+.cert-badge-udacity {
+  background: #E0F7FA;
+}
+
+/* NPTEL / IIT Madras card accent */
+.cert-nptel::before {
+  background: linear-gradient(90deg, #C62828, #E53935);
+}
+
+.cert-badge-nptel {
+  background: #FFEBEE;
+}
+
+/* PDF link variant */
+.cert-link-pdf {
+  background: #FFF7ED;
+  color: #C2410C;
+}
+
+.cert-link-pdf:hover {
+  background: #C2410C;
+  color: #fff;
+}
+
+/* Multi-link footer */
+.cert-card-footer-multi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Certificate thumbnail preview in cert cards */
+.cert-preview-thumb {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--clr-border-light);
+  transition: all var(--transition-base);
+  max-height: 100px;
+}
+
+.cert-preview-thumb:hover {
+  border-color: var(--clr-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.cert-preview-thumb img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+  transition: all var(--transition-slow);
+}
+
+.cert-preview-thumb:hover img {
+  filter: brightness(0.8);
+}
+
+.cert-preview-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: all var(--transition-base);
+}
+
+.cert-preview-overlay span {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #fff;
+  background: rgba(37, 99, 235, 0.85);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all var(--transition-base);
+}
+
+.cert-preview-thumb:hover .cert-preview-overlay span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* ============================================================
    ACHIEVEMENTS SECTION
@@ -1686,6 +1778,159 @@ ul, ol {
 }
 
 
+/* Award Certificate Previews */
+.award-cert-preview {
+  position: relative;
+  margin-top: var(--space-md);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--clr-border-light);
+  transition: all var(--transition-base);
+  max-width: 360px;
+}
+
+.award-cert-preview:hover {
+  border-color: var(--clr-accent);
+  box-shadow: var(--shadow-lg);
+  transform: scale(1.02);
+}
+
+.award-cert-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all var(--transition-slow);
+}
+
+.award-cert-preview:hover .award-cert-img {
+  filter: brightness(0.85);
+}
+
+.award-cert-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(37, 99, 235, 0.0);
+  transition: all var(--transition-base);
+  pointer-events: none;
+}
+
+.award-cert-overlay span {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  background: rgba(37, 99, 235, 0.85);
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.award-cert-preview:hover .award-cert-overlay {
+  background: rgba(15, 23, 42, 0.25);
+}
+
+.award-cert-preview:hover .award-cert-overlay span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Certificate Lightbox Modal */
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: var(--space-xl);
+}
+
+.cert-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cert-modal-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cert-modal.active .cert-modal-content {
+  animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cert-modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+.cert-modal-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--clr-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-fast);
+  z-index: 1;
+  line-height: 1;
+}
+
+.cert-modal-close:hover {
+  background: var(--clr-accent);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.cert-modal-caption {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: var(--space-lg);
+  letter-spacing: -0.01em;
+}
+
+
 /* ============================================================
    RESPONSIVE DESIGN
    ============================================================ */
@@ -1863,6 +2108,19 @@ ul, ol {
   
   .achievement-metric {
     font-size: 2rem;
+  }
+
+  /* Certificate modal responsive */
+  .cert-modal-close {
+    top: -10px;
+    right: -10px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .award-cert-preview {
+    max-width: 100%;
   }
 }
 
